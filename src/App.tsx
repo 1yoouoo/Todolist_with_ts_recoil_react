@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.scss";
-import CurrentDate from "./Components/CurrentDate";
+import InputForm from "./Components/InputForm";
+import CurrentDate from "./Views/CurrentDate";
 import ItemListForm from "./Views/ItemListForm";
 
 function App() {
@@ -9,7 +10,7 @@ function App() {
       <form className="to-do-list-form">
         <CurrentDate />
         <div>할 일을 적어주세요</div>
-        <input />
+        <InputForm />
         <ItemListForm />
       </form>
     </>

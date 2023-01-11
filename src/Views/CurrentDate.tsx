@@ -8,9 +8,10 @@ const CurrentDate = () => {
   });
   return (
     <>
-      <div className="current-date">{`${getYear}/${
-        getMonth + 1
-      }/${getDay} ${dayOfWeekName}`}</div>
+      <div className="current-date">
+        <div className="current-date__day-of-week">{dayOfWeekName}</div>
+        {`${getYear}.${getMonth + 1}.${getDay}`}
+      </div>
     </>
   );
 };
