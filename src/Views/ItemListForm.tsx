@@ -1,9 +1,16 @@
+import { useState } from "react";
 import InputForm from "../Components/InputForm";
 
-const ItemListForm = () => {
+const ItemListForm = (): JSX.Element => {
+  const [inputValue, setInputValue] = useState("");
+
   return (
     <div className="item-list-form">
-      <InputForm />
+      <InputForm
+        onChangeInput={(e) => {
+          console.log("hihihi, ItemListForm", e);
+        }}
+      />
       <ul className="item-list-form__list">
         <li className="item-list-form__list--pin">
           <svg
