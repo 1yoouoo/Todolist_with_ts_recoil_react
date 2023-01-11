@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 // .eslintrc.js example
 module.exports = {
   env: {
