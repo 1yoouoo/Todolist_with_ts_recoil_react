@@ -1,16 +1,15 @@
 import React from "react";
 import "./App.scss";
-import InputForm from "./Components/InputForm";
 import CurrentDate from "./Views/CurrentDate";
+import DurationSelector from "./Views/DurationSelector";
 import ItemListForm from "./Views/ItemListForm";
 
 function App() {
   return (
     <>
       <form className="to-do-list-form">
+        <DurationSelector />
         <CurrentDate />
-        <div>할 일을 적어주세요</div>
-        <InputForm />
         <ItemListForm />
       </form>
     </>
