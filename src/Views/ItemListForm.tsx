@@ -2,18 +2,50 @@ import { useState } from "react";
 import InputForm from "../Components/InputForm";
 
 const ItemListForm = (): JSX.Element => {
+  // dummydata
+  const dummyData: { id: string; task: string }[] = [
+    {
+      id: "1",
+      task: "this is test code !",
+    },
+    {
+      id: "2",
+      task: "this is test code !",
+    },
+    {
+      id: "3",
+      task: "this is test code !",
+    },
+    {
+      id: "4",
+      task: "this is test code !",
+    },
+    {
+      id: "5",
+      task: "this is test code !",
+    },
+  ];
+
+  //state
   const [inputValue, setInputValue] = useState("");
+
+  //function
   const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
+  };
+  const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     console.log(inputValue);
   };
+
   return (
     <div className="item-list-form">
       <InputForm
         onChangeInputValue={onChangeInputValue}
         inputValue={inputValue}
+        onKeyDownEnter={onKeyDownEnter}
       />
       <ul className="item-list-form__list">
+        {/* PIN */}
         <li className="item-list-form__list--pin">
           <svg
             id="pin"
@@ -35,48 +67,24 @@ const ItemListForm = (): JSX.Element => {
             <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
           </svg>
         </li>
-        <li>
-          <span>
-            <input type="checkbox" id="check2" />
-            <label htmlFor="check2"></label>
-            <span>Learning Test code</span>
-          </span>
-          <svg
-            id="vertical-dot"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 128 512"
-          >
-            <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
-          </svg>
-        </li>
-        <li>
-          <span>
-            <input type="checkbox" id="check3" />
-            <label htmlFor="check3"></label>
-            <span>Trying to using BEM</span>
-          </span>
-          <svg
-            id="vertical-dot"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 128 512"
-          >
-            <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
-          </svg>
-        </li>
-        <li>
-          <span>
-            <input type="checkbox" id="check4" />
-            <label htmlFor="check4"></label>
-            <span>Getting used to use React</span>
-          </span>
-          <svg
-            id="vertical-dot"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 128 512"
-          >
-            <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
-          </svg>
-        </li>
+        {dummyData.map((task) => {
+          return (
+            <li key={task.id}>
+              <span>
+                <input type="checkbox" id={task.id} />
+                <label htmlFor={task.id}></label>
+                <span>{task.task}</span>
+              </span>
+              <svg
+                id="vertical-dot"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 128 512"
+              >
+                <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
+              </svg>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

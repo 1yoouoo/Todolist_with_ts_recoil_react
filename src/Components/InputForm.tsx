@@ -3,9 +3,12 @@ import React from "react";
 type InputFormProps = {
   onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
+  onKeyDownEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 };
 
-const InputForm = ({ onChangeInputValue, inputValue }: InputFormProps) => {
+const InputForm = (props: InputFormProps) => {
+  const { onChangeInputValue, inputValue, onKeyDownEnter } = props;
+
   return (
     <div className="input-form">
       <input
@@ -13,6 +16,7 @@ const InputForm = ({ onChangeInputValue, inputValue }: InputFormProps) => {
         placeholder="Add a task ..."
         value={inputValue}
         onChange={(e) => onChangeInputValue(e)}
+        onKeyDown={(e) => onKeyDownEnter(e)}
       />
     </div>
   );

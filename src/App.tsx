@@ -7,7 +7,12 @@ import ItemListForm from "./Views/ItemListForm";
 function App() {
   return (
     <>
-      <form className="to-do-list-form">
+      <form
+        className="to-do-list-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
+      >
         <DurationSelector />
         <CurrentDate />
         <ItemListForm />
