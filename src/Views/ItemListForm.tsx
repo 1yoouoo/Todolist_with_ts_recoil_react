@@ -1,40 +1,49 @@
 import { useState } from "react";
 import InputForm from "../Components/InputForm";
+// type
+type DummyData = { id: string; task: string };
+const initialData = [
+  {
+    id: "1",
+    task: "this is test code !",
+  },
+  {
+    id: "2",
+    task: "this is test code !",
+  },
+  {
+    id: "3",
+    task: "this is test code !",
+  },
+  {
+    id: "4",
+    task: "this is test code !",
+  },
+  {
+    id: "5",
+    task: "this is test code !",
+  },
+];
 
 const ItemListForm = (): JSX.Element => {
   // dummydata
-  const dummyData: { id: string; task: string }[] = [
-    {
-      id: "1",
-      task: "this is test code !",
-    },
-    {
-      id: "2",
-      task: "this is test code !",
-    },
-    {
-      id: "3",
-      task: "this is test code !",
-    },
-    {
-      id: "4",
-      task: "this is test code !",
-    },
-    {
-      id: "5",
-      task: "this is test code !",
-    },
-  ];
+  const [data, setData] = useState<DummyData[]>(initialData);
 
   //state
   const [inputValue, setInputValue] = useState("");
 
   //function
+  const addData = () => {
+    setData([...data, { id: "5", task: inputValue }]);
+  };
   const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   };
   const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(inputValue);
+    if (e.key === "Enter") {
+      addData();
+      console.log(inputValue);
+    }
   };
 
   return (
@@ -67,7 +76,7 @@ const ItemListForm = (): JSX.Element => {
             <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
           </svg>
         </li>
-        {dummyData.map((task) => {
+        {data.map((task) => {
           return (
             <li key={task.id}>
               <span>
