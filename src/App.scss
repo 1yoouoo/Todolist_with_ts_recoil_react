@@ -104,7 +104,7 @@
         transform: translateY(3px);
         position: relative;
       }
-      input[id="check1"]:checked + label::after {
+      input:checked + label::after {
         content: "✔";
         font-size: 10px;
         width: 13px;
@@ -134,5 +134,20 @@
         fill: #f06192;
       }
     }
+  }
+}
+
+// ActiavtedVerticalDot
+.activated-vertical-dot {
+  background-color: blue;
+  position: absolute;
+  line-height: 20px;
+  &__pin {
+    cursor: pointer;
+    border: 1px solid #000;
+  }
+  &__delete {
+    cursor: pointer;
+    border: 1px solid #000;
   }
 }
