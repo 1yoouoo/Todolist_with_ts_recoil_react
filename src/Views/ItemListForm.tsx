@@ -3,13 +3,15 @@ import InputForm from "../Components/InputForm";
 
 const ItemListForm = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
-
+  const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value);
+    console.log(inputValue);
+  };
   return (
     <div className="item-list-form">
       <InputForm
-        onChangeInput={(e) => {
-          console.log("hihihi, ItemListForm", e);
-        }}
+        onChangeInputValue={onChangeInputValue}
+        inputValue={inputValue}
       />
       <ul className="item-list-form__list">
         <li className="item-list-form__list--pin">

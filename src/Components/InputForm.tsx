@@ -1,24 +1,18 @@
-import React, { Children, InputHTMLAttributes } from "react";
+import React from "react";
 
 type InputFormProps = {
-  onChangeInput: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
 };
 
-const InputForm = (props: InputFormProps) => {
-  const onChangeInputValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("onChangeInputValue");
-    props.onChangeInput(e);
-  };
-
+const InputForm = ({ onChangeInputValue, inputValue }: InputFormProps) => {
   return (
     <div className="input-form">
       <input
         className="input-form__input"
         placeholder="Add a task ..."
-        onChange={(e) => {
-          console.log("InputForm event");
-          onChangeInputValue(e);
-        }}
+        value={inputValue}
+        onChange={(e) => onChangeInputValue(e)}
       />
     </div>
   );
