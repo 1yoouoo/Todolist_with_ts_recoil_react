@@ -1,48 +1,63 @@
 import React, { useState } from "react";
 import InputForm from "../Components/InputForm";
 import ActivatedVerticalDot from "./ActivatedVerticalDot";
+import ItemForm from "./ItemForm";
 // type
-type DummyData = { task: string };
+type DummyData = { id: number; task: string; isToggle: boolean };
 const initialData = [
   {
-    task: "this is test code !",
+    id: 1,
+    task: "this is test code1 !",
+    isToggle: true,
   },
   {
-    task: "this is test code !",
+    id: 2,
+    task: "this is test code2 !",
+    isToggle: false,
   },
   {
-    task: "this is test code !",
+    id: 3,
+    task: "this is test code3 !",
+    isToggle: false,
   },
   {
-    task: "this is test code !",
+    id: 4,
+    task: "this is test code4 !",
+    isToggle: false,
   },
   {
-    task: "this is test code !",
+    id: 5,
+    task: "this is test code5 !",
+    isToggle: false,
   },
 ];
-
 const ItemListForm = (): JSX.Element => {
   //state
   const [datas, setDatas] = useState<DummyData[]>(initialData);
   const [inputValue, setInputValue] = useState("");
-  const [selectedRow, setSelectedRow] = useState({});
-  const [testToggle, setTestToggle] = useState(false);
-  //function
-  const onClickVerticalDot = (idx: any) => {
-    console.log(idx);
-    // setSelectedRow(datas.find((data) => data))
-    setTestToggle(!testToggle);
+  // function
+
+  const [toggle, setToggle] = useState(false);
+  const onClickVerticalDot = (data: any) => {
     console.log(datas);
+    setToggle(!toggle);
+    // setDatas([...datas, {}])
+  };
+  const findLastId = () => {
+    const lastId = datas.slice(-1)[0].id;
+    console.log(lastId);
+    return lastId;
   };
   const addData = () => {
-    setDatas([...datas, { task: inputValue }]);
+    const newId = findLastId() + 1;
+    setDatas([...datas, { id: newId, task: inputValue, isToggle: false }]);
+    console.log(datas);
   };
   const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
   };
   const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log(datas.length);
       if (datas.length > 7) {
         alert("할 일이 너무 많습니다 ..");
       } else {
@@ -60,7 +75,6 @@ const ItemListForm = (): JSX.Element => {
         onKeyDownEnter={onKeyDownEnter}
       />
       <ul className="item-list-form__list">
-        {/* PIN */}
         <li className="item-list-form__list--pin">
           <svg
             id="pin"
@@ -82,38 +96,13 @@ const ItemListForm = (): JSX.Element => {
             <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
           </svg>
         </li>
-        {datas.map((task, idx) => {
+        {datas.map((data, idx) => {
           return (
-            <li key={idx}>
-              <span>
-                <input type="checkbox" id={`${idx}`} />
-                <label htmlFor={`${idx}`}></label>
-                <span>{task.task}</span>
-              </span>
-              <span
-                className="item-list-form__list--vertical-dot"
-                onClick={() => onClickVerticalDot(idx)}
-              >
-                <svg
-                  id="vertical-dot"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 128 512"
-                >
-                  <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
-                </svg>
-                {/* <ActivatedVerticalDot /> */}
-                <span
-                  className={
-                    testToggle
-                      ? "activated-vertical-dot-active"
-                      : "activated-vertical-dot"
-                  }
-                >
-                  <span className="activated-vertical-dot__pin">pin</span>
-                  <span className="activated-vertical-dot__delete">delete</span>
-                </span>
-              </span>
-            </li>
+            <ItemForm
+              data={data}
+              idx={idx}
+              onClickVerticalDot={onClickVerticalDot}
+            />
           );
         })}
       </ul>
