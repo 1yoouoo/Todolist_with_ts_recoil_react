@@ -3,32 +3,27 @@ import InputForm from "../Components/InputForm";
 import ActivatedVerticalDot from "./ActivatedVerticalDot";
 import ItemForm from "./ItemForm";
 // type
-type DummyData = { id: number; task: string; isToggle: boolean };
+type DummyData = { id: number; task: string };
 const initialData = [
   {
     id: 1,
     task: "this is test code1 !",
-    isToggle: true,
   },
   {
     id: 2,
     task: "this is test code2 !",
-    isToggle: false,
   },
   {
     id: 3,
     task: "this is test code3 !",
-    isToggle: false,
   },
   {
     id: 4,
     task: "this is test code4 !",
-    isToggle: false,
   },
   {
     id: 5,
     task: "this is test code5 !",
-    isToggle: false,
   },
 ];
 const ItemListForm = (): JSX.Element => {
@@ -37,12 +32,6 @@ const ItemListForm = (): JSX.Element => {
   const [inputValue, setInputValue] = useState("");
   // function
 
-  const [toggle, setToggle] = useState(false);
-  const onClickVerticalDot = (data: any) => {
-    console.log(datas);
-    setToggle(!toggle);
-    // setDatas([...datas, {}])
-  };
   const findLastId = () => {
     const lastId = datas.slice(-1)[0].id;
     console.log(lastId);
@@ -50,8 +39,7 @@ const ItemListForm = (): JSX.Element => {
   };
   const addData = () => {
     const newId = findLastId() + 1;
-    setDatas([...datas, { id: newId, task: inputValue, isToggle: false }]);
-    console.log(datas);
+    setDatas([...datas, { id: newId, task: inputValue }]);
   };
   const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value);
@@ -97,13 +85,7 @@ const ItemListForm = (): JSX.Element => {
           </svg>
         </li>
         {datas.map((data, idx) => {
-          return (
-            <ItemForm
-              data={data}
-              idx={idx}
-              onClickVerticalDot={onClickVerticalDot}
-            />
-          );
+          return <ItemForm data={data} idx={idx} />;
         })}
       </ul>
     </div>
