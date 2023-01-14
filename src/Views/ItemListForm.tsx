@@ -30,8 +30,8 @@ const ItemListForm = (): JSX.Element => {
   //state
   const [datas, setDatas] = useState<DummyData[]>(initialData);
   const [inputValue, setInputValue] = useState("");
-  // function
 
+  // function
   const findLastId = () => {
     const lastId = datas.slice(-1)[0].id;
     console.log(lastId);

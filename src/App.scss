@@ -140,16 +140,17 @@
 // ActiavtedVerticalDot
 .activated-vertical-dot {
   &-shown {
-    background-color: blue;
     position: absolute;
     line-height: 20px;
+    padding: 2px 3px 2px 0;
+    background-color: black;
     &__pin {
       cursor: pointer;
-      border: 1px solid #000;
+      padding: 2px 3px;
     }
     &__delete {
       cursor: pointer;
-      border: 1px solid #000;
+      padding: 2px 3px;
     }
   }
   &-hidden {

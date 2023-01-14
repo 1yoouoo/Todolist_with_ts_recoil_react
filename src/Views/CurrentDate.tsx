@@ -1,9 +1,9 @@
 const CurrentDate = () => {
-  const date: Date = new (Date as any)();
+  const date: Date = new Date();
   const getYear: number = date.getFullYear();
   const getMonth = date.toLocaleString("default", { month: "long" });
   const getDay: number = date.getDay();
-  const dayOfWeekName: string = new (Date as any)().toLocaleString("default", {
+  const dayOfWeekName: string = date.toLocaleString("default", {
     weekday: "long",
   });
   return (
