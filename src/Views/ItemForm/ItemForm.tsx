@@ -1,9 +1,19 @@
-import { useState } from "react";
-import ActivatedVerticalDot from "./ActivatedVerticalDot";
+import "./ItemForm.scss";
 
-const ItemForm = ({ data, idx }: any) => {
+import { useState } from "react";
+import ActivatedVerticalDot from "../ActivatedVerticalDot/ActivatedVerticalDot";
+type ItemForProps = {
+  data: DataObject;
+  idx: number;
+};
+type DataObject = {
+  id: number;
+  task: string;
+};
+const ItemForm = (props: ItemForProps) => {
+  const { data, idx } = props;
   const [toggle, setToggle] = useState(false);
-  const onClickVerticalDot = (data: any) => {
+  const onClickVerticalDot = (data: DataObject) => {
     setToggle(!toggle);
     console.log(data);
   };

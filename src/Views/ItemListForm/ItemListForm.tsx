@@ -1,7 +1,7 @@
+import "./ItemListForm.scss";
 import React, { useState } from "react";
-import InputForm from "../Components/InputForm";
-import ActivatedVerticalDot from "./ActivatedVerticalDot";
-import ItemForm from "./ItemForm";
+import InputForm from "../../Components/InputForm/InputForm";
+import ItemForm from "../ItemForm/ItemForm";
 // type
 type DummyData = { id: number; task: string };
 const initialData = [
@@ -34,7 +34,6 @@ const ItemListForm = (): JSX.Element => {
   // function
   const findLastId = () => {
     const lastId = datas.slice(-1)[0].id;
-    console.log(lastId);
     return lastId;
   };
   const addData = () => {
@@ -50,7 +49,6 @@ const ItemListForm = (): JSX.Element => {
         alert("할 일이 너무 많습니다 ..");
       } else {
         addData();
-        console.log(inputValue);
       }
     }
   };

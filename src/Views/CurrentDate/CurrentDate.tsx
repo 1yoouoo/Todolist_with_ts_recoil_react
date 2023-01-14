@@ -1,3 +1,5 @@
+import "./CurrentDate.scss";
+
 const CurrentDate = () => {
   const date: Date = new Date();
   const getYear: number = date.getFullYear();

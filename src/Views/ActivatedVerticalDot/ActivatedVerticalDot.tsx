@@ -1,3 +1,7 @@
+import Delete from "../../Components/Delete/Delete";
+import Pin from "../../Components/Pin/Pin";
+import "./ActivatedVerticalDot.scss";
+
 const ActivatedVerticalDot = ({ toggle }: { toggle: boolean }) => {
   return (
     <span
@@ -7,8 +11,8 @@ const ActivatedVerticalDot = ({ toggle }: { toggle: boolean }) => {
           : "activated-vertical-dot-hidden"
       }
     >
-      <span className="activated-vertical-dot-shown__pin">pin</span>
-      <span className="activated-vertical-dot-shown__delete">delete</span>
+      <Pin />
+      <Delete />
     </span>
   );
 };

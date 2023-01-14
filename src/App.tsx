@@ -1,8 +1,7 @@
 import React from "react";
-import "./App.scss";
-import CurrentDate from "./Views/CurrentDate";
-import DurationSelector from "./Views/DurationSelector";
-import ItemListForm from "./Views/ItemListForm";
+import CurrentDate from "./Views/CurrentDate/CurrentDate";
+import DurationSelector from "./Views/DurationSelector/DurationSelector";
+import ItemListForm from "./Views/ItemListForm/ItemListForm";
 
 function App() {
   return (

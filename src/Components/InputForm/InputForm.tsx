@@ -1,4 +1,5 @@
 import React from "react";
+import "./InputForm.scss";
 
 type InputFormProps = {
   onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;

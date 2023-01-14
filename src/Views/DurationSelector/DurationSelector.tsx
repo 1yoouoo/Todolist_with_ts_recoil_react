@@ -1,3 +1,5 @@
+import "./DurationSelector.scss";
+
 const DurationSelector = () => {
   return (
     <nav className="duration-nav">

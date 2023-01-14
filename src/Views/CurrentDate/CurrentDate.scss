@@ -1,0 +1,17 @@
+.current-date {
+  text-align: center;
+  font-size: 12px;
+  font-weight: 800;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #80858a;
+  &__day-of-week {
+    display: block;
+    color: white;
+    font-size: 20px;
+  }
+  &__ymd {
+    display: block;
+    margin-top: 10px;
+  }
+}
