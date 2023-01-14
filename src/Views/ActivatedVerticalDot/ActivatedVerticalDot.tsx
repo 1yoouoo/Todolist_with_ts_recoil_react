@@ -1,8 +1,12 @@
 import Delete from "../../Components/Delete/Delete";
 import Pin from "../../Components/Pin/Pin";
+import { TodoType } from "../../types/todoType";
 import "./ActivatedVerticalDot.scss";
-
-const ActivatedVerticalDot = ({ toggle }: { toggle: boolean }) => {
+type ActivatedVerticalDot = {
+  toggle: boolean;
+  data: TodoType;
+};
+const ActivatedVerticalDot = ({ toggle, data }: ActivatedVerticalDot) => {
   return (
     <span
       className={
@@ -11,8 +15,8 @@ const ActivatedVerticalDot = ({ toggle }: { toggle: boolean }) => {
           : "activated-vertical-dot-hidden"
       }
     >
-      <Pin />
-      <Delete />
+      {/* <Pin pin={data.pin}/> */}
+      <Delete id={data.id} />
     </span>
   );
 };

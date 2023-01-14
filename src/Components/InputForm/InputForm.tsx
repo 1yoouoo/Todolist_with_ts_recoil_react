@@ -1,14 +1,34 @@
 import React from "react";
+import { useRecoilState } from "recoil";
+import { todoInputState, todosState } from "../../recoil/todosState";
+import { TodoType } from "../../types/todoType";
 import "./InputForm.scss";
 
-type InputFormProps = {
-  onChangeInputValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  inputValue: string;
-  onKeyDownEnter: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-};
+const InputForm = () => {
+  const [inputValue, setInputValue] = useRecoilState<string>(todoInputState);
+  const [todos, setTodos] = useRecoilState<TodoType[]>(todosState);
 
-const InputForm = (props: InputFormProps) => {
-  const { onChangeInputValue, inputValue, onKeyDownEnter } = props;
+  // function
+  const findLastId = () => {
+    const lastId = todos.slice(-1)[0].id;
+    return lastId;
+  };
+  const addData = () => {
+    const newId = findLastId() + 1;
+    setTodos([...todos, { id: newId, pin: false, task: inputValue }]);
+  };
+  const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value);
+  };
+  const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      if (todos.length > 7) {
+        alert("할 일이 너무 많습니다 ..");
+      } else {
+        addData();
+      }
+    }
+  };
 
   return (
     <div className="input-form">

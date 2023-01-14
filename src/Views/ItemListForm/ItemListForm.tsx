@@ -1,67 +1,20 @@
 import "./ItemListForm.scss";
-import React, { useState } from "react";
+import React from "react";
 import InputForm from "../../Components/InputForm/InputForm";
 import ItemForm from "../ItemForm/ItemForm";
-// type
-type DummyData = { id: number; task: string };
-const initialData = [
-  {
-    id: 1,
-    task: "this is test code1 !",
-  },
-  {
-    id: 2,
-    task: "this is test code2 !",
-  },
-  {
-    id: 3,
-    task: "this is test code3 !",
-  },
-  {
-    id: 4,
-    task: "this is test code4 !",
-  },
-  {
-    id: 5,
-    task: "this is test code5 !",
-  },
-];
+import { useRecoilValue } from "recoil";
+import { TodoType } from "../../types/todoType";
+import { todosState } from "../../recoil/todosState";
+
 const ItemListForm = (): JSX.Element => {
   //state
-  const [datas, setDatas] = useState<DummyData[]>(initialData);
-  const [inputValue, setInputValue] = useState("");
-
-  // function
-  const findLastId = () => {
-    const lastId = datas.slice(-1)[0].id;
-    return lastId;
-  };
-  const addData = () => {
-    const newId = findLastId() + 1;
-    setDatas([...datas, { id: newId, task: inputValue }]);
-  };
-  const onChangeInputValue = (e: React.FormEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value);
-  };
-  const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      if (datas.length > 7) {
-        alert("할 일이 너무 많습니다 ..");
-      } else {
-        addData();
-      }
-    }
-  };
+  const todos = useRecoilValue<TodoType[]>(todosState);
 
   return (
     <div className="item-list-form">
-      <InputForm
-        onChangeInputValue={onChangeInputValue}
-        inputValue={inputValue}
-        onKeyDownEnter={onKeyDownEnter}
-      />
+      <InputForm />
       <ul className="item-list-form__list">
-        <li className="item-list-form__list--pin">
+        {/* <li className="item-list-form__list--pin">
           <svg
             id="pin"
             xmlns="http://www.w3.org/2000/svg"
@@ -81,9 +34,9 @@ const ItemListForm = (): JSX.Element => {
           >
             <path d="M64 360c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zm0-160c30.9 0 56 25.1 56 56s-25.1 56-56 56s-56-25.1-56-56s25.1-56 56-56zM120 96c0 30.9-25.1 56-56 56S8 126.9 8 96S33.1 40 64 40s56 25.1 56 56z" />
           </svg>
-        </li>
-        {datas.map((data, idx) => {
-          return <ItemForm data={data} idx={idx} />;
+        </li> */}
+        {todos.map((data) => {
+          return <ItemForm data={data} />;
         })}
       </ul>
     </div>
