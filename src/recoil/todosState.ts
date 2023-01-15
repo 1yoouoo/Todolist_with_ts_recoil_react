@@ -22,8 +22,8 @@ export const todosState = atom<TodoType[]>({
   ],
 });
 
-export const pinState = atom<TodoType[]>({
-  key: "pinState",
+export const pinsState = atom<TodoType[]>({
+  key: "pinsState",
   default: [
     {
       id: 1,

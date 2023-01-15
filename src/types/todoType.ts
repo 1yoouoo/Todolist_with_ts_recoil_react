@@ -17,5 +17,6 @@ export type ActivatedVerticalDotPropTypes = {
 export type TogglePropTypes = {
   id?: number;
   onDelete?: (id?: number | undefined) => void;
-  onPin?: ((id?: number | undefined) => void) | undefined;
+  onPin?: (id?: number | undefined) => void;
+  onUnPin?: (id?: number | undefined) => void;
 };
