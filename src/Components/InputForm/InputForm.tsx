@@ -22,10 +22,11 @@ const InputForm = () => {
   };
   const onKeyDownEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      if (todos.length > 7) {
+      if (todos.length > 8) {
         alert("할 일이 너무 많습니다 ..");
       } else {
         addData();
+        setInputValue("");
       }
     }
   };

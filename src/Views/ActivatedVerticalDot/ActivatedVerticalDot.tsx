@@ -2,7 +2,7 @@ import { useRecoilState } from "recoil";
 import Delete from "../../Components/Delete/Delete";
 import Pin from "../../Components/Pin/Pin";
 import UnPin from "../../Components/UnPin/UnPin";
-import { pinsState, todosState } from "../../recoil/todosState";
+import { todosState } from "../../recoil/todosState";
 import { ActivatedVerticalDotPropTypes, TodoType } from "../../types/todoType";
 import "./ActivatedVerticalDot.scss";
 
@@ -11,7 +11,6 @@ const ActivatedVerticalDot = ({
   data,
 }: ActivatedVerticalDotPropTypes) => {
   const [todos, setTodos] = useRecoilState<TodoType[]>(todosState);
-  const [pins, setPins] = useRecoilState<TodoType[]>(pinsState);
 
   const onDelete = (id?: number): void => {
     setTodos(
@@ -19,13 +18,20 @@ const ActivatedVerticalDot = ({
         return todo.id !== id;
       })
     );
-    console.log(id);
-    // setPins(
-    //   pins.filter((todo) => {
-    //     return todo.id !== id;
-    //   })
-    // );
-    // console.log(id);
+  };
+  const onUnPin = (id?: number): void => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, pin: !todo.pin } : todo;
+      })
+    );
+  };
+  const onPin = (id?: number): void => {
+    setTodos(
+      todos.map((todo) => {
+        return todo.id === id ? { ...todo, pin: !todo.pin } : todo;
+      })
+    );
   };
   return (
     <span
@@ -35,9 +41,16 @@ const ActivatedVerticalDot = ({
           : "activated-vertical-dot-hidden"
       }
     >
-      <UnPin id={data?.id} />
-      <Pin id={data?.id} />
-      <Delete id={data?.id} onDelete={onDelete} />
+      {data?.pin === true ? (
+        <>
+          <UnPin id={data?.id} onUnPin={onUnPin} />
+        </>
+      ) : (
+        <>
+          <Pin id={data?.id} onPin={onPin} />
+          <Delete id={data?.id} onDelete={onDelete} />
+        </>
+      )}
     </span>
   );
 };

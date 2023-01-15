@@ -47,17 +47,16 @@
         transform: translateY(2px);
       }
     }
-
-    &--pin {
-      padding: 10px 5px 25px 0 !important;
-      border-bottom: 1px solid rgb(37, 37, 37);
-      #pin {
-        width: 12px;
-        position: absolute;
-        left: 13px;
-        transform: translateY(2px);
-        fill: #f06192;
-      }
-    }
   }
+}
+// &--pin {
+//   padding: 10px 5px 25px 0 !important;
+//   border-bottom: 1px solid rgb(37, 37, 37);
+// }
+#pin {
+  width: 12px;
+  position: absolute;
+  left: 13px;
+  transform: translate(-9px, 1.5px);
+  fill: #f06192;
 }

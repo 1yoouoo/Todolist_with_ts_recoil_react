@@ -6,29 +6,18 @@ export const todosState = atom<TodoType[]>({
   default: [
     {
       id: 1,
-      pin: false,
-      task: "this is test code1 !",
+      pin: true,
+      task: "Default) Learning Typescript !",
     },
     {
       id: 2,
       pin: false,
-      task: "this is test code2 !",
+      task: "Default) Learning Recoil !",
     },
     {
       id: 3,
       pin: false,
-      task: "this is test code3 !",
-    },
-  ],
-});
-
-export const pinsState = atom<TodoType[]>({
-  key: "pinsState",
-  default: [
-    {
-      id: 1,
-      pin: true,
-      task: "this is pin 1",
+      task: "Default) Learning React !",
     },
   ],
 });
