@@ -22,6 +22,17 @@ export const todosState = atom<TodoType[]>({
   ],
 });
 
+export const pinState = atom<TodoType[]>({
+  key: "pinState",
+  default: [
+    {
+      id: 1,
+      pin: true,
+      task: "this is pin 1",
+    },
+  ],
+});
+
 export const todoInputState = atom<string>({
   key: "todoInputState",
   default: "",

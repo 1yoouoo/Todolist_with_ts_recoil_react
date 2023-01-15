@@ -1,12 +1,31 @@
+import { useRecoilState } from "recoil";
 import Delete from "../../Components/Delete/Delete";
 import Pin from "../../Components/Pin/Pin";
-import { TodoType } from "../../types/todoType";
+import { pinState, todosState } from "../../recoil/todosState";
+import { ActivatedVerticalDotPropTypes, TodoType } from "../../types/todoType";
 import "./ActivatedVerticalDot.scss";
-type ActivatedVerticalDot = {
-  toggle: boolean;
-  data: TodoType;
-};
-const ActivatedVerticalDot = ({ toggle, data }: ActivatedVerticalDot) => {
+
+const ActivatedVerticalDot = ({
+  toggle,
+  data,
+}: ActivatedVerticalDotPropTypes) => {
+  const [pins, setPins] = useRecoilState<TodoType[]>(pinState);
+  const [todos, setTodos] = useRecoilState<TodoType[]>(todosState);
+  const onPin = (id?: number): void => {
+    setPins(
+      todos.filter((todo) => {
+        return todo.id === id;
+      })
+    );
+    onDelete(id);
+  };
+  const onDelete = (id?: number): void => {
+    setTodos(
+      todos.filter((todo) => {
+        return todo.id !== id;
+      })
+    );
+  };
   return (
     <span
       className={
@@ -15,8 +34,8 @@ const ActivatedVerticalDot = ({ toggle, data }: ActivatedVerticalDot) => {
           : "activated-vertical-dot-hidden"
       }
     >
-      {/* <Pin pin={data.pin}/> */}
-      <Delete id={data.id} />
+      <Pin id={data?.id} onPin={onPin} />
+      <Delete id={data?.id} onDelete={onDelete} />
     </span>
   );
 };

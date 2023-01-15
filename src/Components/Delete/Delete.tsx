@@ -1,21 +1,9 @@
 import "./Delete.scss";
-import { useRecoilState } from "recoil";
-import { TodoType } from "../../types/todoType";
-import { todosState } from "../../recoil/todosState";
-type DeleteProps = {
-  id: number;
-};
-const Delete = ({ id }: DeleteProps) => {
-  const [todos, setTodos] = useRecoilState<TodoType[]>(todosState);
-  const onDelete = (id: number): void => {
-    setTodos(
-      todos.filter((todo) => {
-        return todo.id !== id;
-      })
-    );
-  };
+import { TogglePropTypes } from "../../types/todoType";
+
+const Delete = ({ id, onDelete }: TogglePropTypes) => {
   return (
-    <span className="toggle__shown-delete" onClick={() => onDelete(id)}>
+    <span className="toggle__shown-delete" onClick={() => onDelete?.(id)}>
       delete
     </span>
   );

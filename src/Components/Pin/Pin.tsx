@@ -1,7 +1,14 @@
+import { TogglePropTypes } from "../../types/todoType";
 import "./Pin.scss";
 
-const Pin = () => {
-  return <span className="toggle__shown-pin">pin</span>;
+const Pin = ({ id, onPin }: TogglePropTypes) => {
+  // function
+
+  return (
+    <span className="toggle__shown-pin" onClick={() => onPin?.(id)}>
+      pin
+    </span>
+  );
 };
 
 export default Pin;

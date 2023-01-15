@@ -5,5 +5,17 @@ export interface TodoType {
 }
 
 export interface TodoPropTypes {
-  data: TodoType;
+  data?: TodoType;
+  pin?: TodoType;
 }
+
+export type ActivatedVerticalDotPropTypes = {
+  toggle: boolean;
+  data?: TodoType;
+};
+
+export type TogglePropTypes = {
+  id?: number;
+  onDelete?: (id?: number | undefined) => void;
+  onPin?: ((id?: number | undefined) => void) | undefined;
+};
