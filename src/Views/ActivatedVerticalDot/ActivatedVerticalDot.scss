@@ -1,0 +1,12 @@
+// ActiavtedVerticalDot
+.activated-vertical-dot {
+  &-shown {
+    position: absolute;
+    line-height: 20px;
+    padding: 2px 3px 2px 0;
+    background-color: black;
+  }
+  &-hidden {
+    display: none;
+  }
+}

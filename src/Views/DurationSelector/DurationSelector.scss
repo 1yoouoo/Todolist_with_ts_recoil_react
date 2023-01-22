@@ -1,0 +1,22 @@
+.duration-nav {
+  display: flex;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.414);
+  justify-content: space-around;
+  padding-left: 70px;
+  padding-right: 70px;
+  font-weight: 500;
+  font-size: 12px;
+  color: rgb(141, 140, 140);
+  & span {
+    line-height: 30px;
+    cursor: pointer;
+    height: 30px;
+    width: 50px;
+    box-sizing: border-box;
+  }
+  &__day {
+    border-bottom: 2px solid #f06192;
+    color: #fff;
+    font-weight: 800;
+  }
+}
