@@ -2,6 +2,9 @@
 
 ## 프로젝트 목표 : Todo 리스트 만들기
 
+![Large GIF (640x593)](https://user-images.githubusercontent.com/79697414/213916138-afc9a00a-7299-47dd-8797-11be71deb439.gif)
+
+
 ## 프로젝트 동기
 - 타입스크립트 익숙해지기
 - recoil 사용해보기
